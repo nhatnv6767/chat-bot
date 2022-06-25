@@ -7,6 +7,5 @@ let configViewEngine = (app) => {
     app.set("views", "./src/views")
 }
 
-module.exports = {
-    configViewEngine,
-};
+module.exports = configViewEngine
+
