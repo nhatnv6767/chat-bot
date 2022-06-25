@@ -3,6 +3,16 @@ let getHomePage = (req, res) => {
     return res.render('homepage.ejs')
 }
 
+let postWebhook = (req, res) => {
+
+}
+
+let getWebhook = (req, res) => {
+
+}
+
 module.exports = {
     getHomePage: getHomePage,
+    postWebhook: postWebhook,
+    getWebhook: getWebhook,
 }
