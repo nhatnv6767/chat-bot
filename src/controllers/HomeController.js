@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 let getHomePage = (req, res) => {
     // because config viewEngine
     return res.render('homepage.ejs')
@@ -28,7 +30,7 @@ let postWebhook = (req, res) => {
 
 let getWebhook = (req, res) => {
 // Your verify token. Should be a random string.
-    let VERIFY_TOKEN = "<YOUR_VERIFY_TOKEN>"
+    let VERIFY_TOKEN = process.env.VERIFY_TOKEN
 
     // Parse the query params
     let mode = req.query['hub.mode'];
