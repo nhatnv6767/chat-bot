@@ -59,3 +59,7 @@ module.exports = {
     postWebhook: postWebhook,
     getWebhook: getWebhook,
 }
+
+// curl -X GET "localhost:8080/webhook?hub.verify_token=isJustRandomString&hub.challenge=CHALLENGE_ACCEPTED&hub.mode=subscribe"
+
+// curl -H "Content-Type: application/json" -X POST "localhost:8080/webhook" -d '{"object": "page", "entry": [{"messaging": [{"message": "TEST_MESSAGE"}]}]}'
