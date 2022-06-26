@@ -118,6 +118,11 @@ let handleSendMainMenu = (sender_psid) => {
 }
 
 let getMainMenuTemplate = () => {
+
+    let MAIN_MENU = "https://bit.ly/3HTBICf"
+    let TIME_OPEN = "https://bit.ly/3u3dKz3"
+    let SPACE_RESTAURANT = "https://bit.ly/3QJAqOx"
+
     let response = {
         "attachment": {
             "type": "template",
@@ -127,7 +132,7 @@ let getMainMenuTemplate = () => {
                     {
                     "title": "Menu của nhà hàng",
                     "subtitle": "Chúng tôi hân hạnh mang tới cho bạn thực đơn phong phú cho bữa trưa và bữa tối.",
-                    "image_url": IMAGE_GET_STARTED,
+                    "image_url": MAIN_MENU,
                     "buttons": [
                         {
                             "type": "postback",
@@ -144,7 +149,7 @@ let getMainMenuTemplate = () => {
                     {
                         "title": "Giờ mở cửa",
                         "subtitle": "T2-T6 10h-23h | T7 17h-22h | CN 17h-21h",
-                        "image_url": IMAGE_GET_STARTED,
+                        "image_url": TIME_OPEN,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -156,7 +161,7 @@ let getMainMenuTemplate = () => {
                     {
                         "title": "Không gian nhà hàng",
                         "subtitle": "Nhà hàng có sức chứa lên tới 300 khách và phù hợp cho mọi thể loại bữa tiệc.",
-                        "image_url": IMAGE_GET_STARTED,
+                        "image_url": SPACE_RESTAURANT,
                         "buttons": [
                             {
                                 "type": "postback",
