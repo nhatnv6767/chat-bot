@@ -178,7 +178,43 @@ let getMainMenuTemplate = () => {
     return response
 }
 
+let handleSendLunchMenu = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let first_response = getLunchMenuTemplate()
+            await callSendAPI(sender_psid, first_response)
+
+            resolve("done")
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let getLunchMenuTemplate = () => {
+    
+}
+
+let handleSendDinnerMenu = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let first_response = getDinnerMenuTemplate()
+            await callSendAPI(sender_psid, first_response)
+
+            resolve("done")
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let getDinnerMenuTemplate = () => {
+
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
     handleSendMainMenu: handleSendMainMenu,
+    handleSendLunchMenu: handleSendLunchMenu,
+    handleSendDinnerMenu: handleSendDinnerMenu,
 }
