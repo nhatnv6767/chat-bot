@@ -3,7 +3,7 @@ import request from "request";
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
-let callSendAPI = () => {
+let callSendAPI = (response) => {
     // Construct the message body
     let request_body = {
         "recipient": {
@@ -27,7 +27,15 @@ let callSendAPI = () => {
 }
 
 let handleGetStarted = () => {
-
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response = { "text": "Chào mừng bạn XXX đến với nhà hàng của chúng tôi." }
+            await this.callSendAPI(response)
+            resolve("done")
+        } catch (e) {
+            reject(e);
+        }
+    })
 }
 
 module.exports = {
