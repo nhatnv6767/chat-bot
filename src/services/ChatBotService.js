@@ -7,6 +7,10 @@ const IMAGE_MAIN_MENU_1 = "https://bit.ly/3HTBICf"
 const IMAGE_MAIN_MENU_2 = "https://bit.ly/3u3dKz3"
 const IMAGE_MAIN_MENU_3 = "https://bit.ly/3QJAqOx"
 
+const IMAGE_VIEW_APPETIZERS = "https://bit.ly/3QLYAaZ"
+const IMAGE_VIEW_FISH = "https://bit.ly/3HPYvz3"
+const IMAGE_VIEW_MEAT = "https://bit.ly/3xNHCQI"
+
 let callSendAPI = (sender_psid, response) => {
     // Construct the message body
     let request_body = {
@@ -178,7 +182,145 @@ let getMainMenuTemplate = () => {
     return response
 }
 
+let handleSendLunchMenu = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let first_response = getLunchMenuTemplate()
+            await callSendAPI(sender_psid, first_response)
+
+            resolve("done")
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let getLunchMenuTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Món tráng miệng",
+                        "subtitle": "Nhà hàng có nhiều món tráng miệng hấp dẫn",
+                        "image_url": IMAGE_VIEW_APPETIZERS,
+                        "buttons": [
+                            {
+                                // Appetizers
+                                "type": "postback",
+                                "title": "XEM CHI TIẾT",
+                                "payload": "VIEW_APPETIZERS",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Các loại cá",
+                        "subtitle": "Nhiều món cá phù hợp với mọi loại khẩu vị",
+                        "image_url": IMAGE_VIEW_FISH,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "XEM CHI TIẾT",
+                                "payload": "VIEW_FISH",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Thịt hun khói",
+                        "subtitle": "Thơm ngon, hợp vệ sinh.",
+                        "image_url": IMAGE_VIEW_MEAT,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "XEM CHI TIẾT",
+                                "payload": "VIEW_MEAT",
+                            }
+                        ],
+                    }
+                ]
+            }
+        }
+    }
+
+
+    return response
+}
+
+let handleSendDinnerMenu = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let first_response = getDinnerMenuTemplate()
+            await callSendAPI(sender_psid, first_response)
+
+            resolve("done")
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let getDinnerMenuTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Menu của nhà hàng",
+                        "subtitle": "Chúng tôi hân hạnh mang tới cho bạn thực đơn phong phú cho bữa trưa và bữa tối.",
+                        "image_url": IMAGE_MAIN_MENU_1,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "BỮA TRƯA",
+                                "payload": "LUNCH_MENU",
+                            },
+                            {
+                                "type": "postback",
+                                "title": "BỮA TỐI",
+                                "payload": "DINNER_MENU",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Giờ mở cửa",
+                        "subtitle": "T2-T6 10h-23h | T7 17h-22h | CN 17h-21h",
+                        "image_url": IMAGE_MAIN_MENU_2,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "ĐẶT BÀN",
+                                "payload": "RESERVE_TABLE",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Không gian nhà hàng",
+                        "subtitle": "Nhà hàng có sức chứa lên tới 300 khách và phù hợp cho mọi thể loại bữa tiệc.",
+                        "image_url": IMAGE_MAIN_MENU_3,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "CHI TIẾT",
+                                "payload": "SHOW_ROOMS",
+                            }
+                        ],
+                    }
+                ]
+            }
+        }
+    }
+
+
+    return response
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
     handleSendMainMenu: handleSendMainMenu,
+    handleSendLunchMenu: handleSendLunchMenu,
+    handleSendDinnerMenu: handleSendDinnerMenu,
 }
