@@ -53,7 +53,7 @@ let handleGetStarted = (sender_psid) => {
         try {
             let username = await getUserName(sender_psid)
             let first_response = { "text": `Chào mừng bạn ${username} đến với nhà hàng của chúng tôi.` }
-            let second_response = sendGetStartedTemplate()
+            let second_response = getStartedTemplate()
 
             // send text message
             await callSendAPI(sender_psid, first_response)
@@ -68,8 +68,7 @@ let handleGetStarted = (sender_psid) => {
     })
 }
 
-let sendGetStartedTemplate = () => {
-
+let getStartedTemplate = () => {
     let response = {
         "attachment": {
             "type": "template",
@@ -106,7 +105,73 @@ let sendGetStartedTemplate = () => {
 }
 
 let handleSendMainMenu = (sender_psid) => {
-    
+    return new Promise(async (resolve, reject) => {
+        try {
+            let first_response = getMainMenuTemplate()
+            await callSendAPI(sender_psid, first_response)
+
+            resolve("done")
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let getMainMenuTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                    "title": "Menu của nhà hàng",
+                    "subtitle": "Chúng tôi hân hạnh mang tới cho bạn thực đơn phong phú cho bữa trưa và bữa tối.",
+                    "image_url": IMAGE_GET_STARTED,
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "BỮA TRƯA",
+                            "payload": "LUNCH_MENU",
+                        },
+                        {
+                            "type": "postback",
+                            "title": "BỮA TỐI",
+                            "payload": "DINNER_MENU",
+                        }
+                    ],
+                    },
+                    {
+                        "title": "Giờ mở cửa",
+                        "subtitle": "T2-T6 10h-23h | T7 17h-22h | CN 17h-21h",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "ĐẶT BÀN",
+                                "payload": "RESERVE_TABLE",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Không gian nhà hàng",
+                        "subtitle": "Nhà hàng có sức chứa lên tới 300 khách và phù hợp cho mọi thể loại bữa tiệc.",
+                        "image_url": IMAGE_GET_STARTED,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "CHI TIẾT",
+                                "payload": "SHOW_ROOMS",
+                            }
+                        ],
+                    }
+                ]
+            }
+        }
+    }
+
+
+    return response
 }
 
 module.exports = {
