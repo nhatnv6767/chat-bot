@@ -161,7 +161,7 @@ let setupProfile = (req, res) => {
     // Construct the message body
     let request_body = {
         "get_started" : {"payload":"GET_STARTED"},
-        "whitelisted_domains": "https://chat-bot-vi.herokuapp.com/"
+        "whitelisted_domains": ["https://chat-bot-vi.herokuapp.com/"]
     }
     // Send the HTTP request to the Messenger Platform
     request({
