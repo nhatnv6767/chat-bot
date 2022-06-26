@@ -2,7 +2,7 @@ require("dotenv").config()
 import request from "request";
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
-const IMAGE_GET_STARTED = "https://shorturl.at/jAQU2"
+const IMAGE_GET_STARTED = "https://bit.ly/3ng47Jt"
 
 let callSendAPI = (sender_psid, response) => {
     // Construct the message body
