@@ -156,7 +156,7 @@ function callSendAPI(sender_psid, response) {
     });
 }
 
-let setupProfile = (req, res) => {
+let setupProfile = async (req, res) => {
     // call facebook api profile
     // Construct the message body
     let request_body = {
@@ -164,7 +164,7 @@ let setupProfile = (req, res) => {
         "whitelisted_domains": ["https://chat-bot-vi.herokuapp.com/"]
     }
     // Send the HTTP request to the Messenger Platform
-    request({
+    await request({
         "uri": `https://graph.facebook.com/v14.0/me/messenger_profile?access_token=${PAGE_ACCESS_TOKEN}`,
         "qs": { "access_token": PAGE_ACCESS_TOKEN },
         "method": "POST",
@@ -176,6 +176,8 @@ let setupProfile = (req, res) => {
             console.error("Unable to setup user profile:" + err);
         }
     });
+
+    return res.send("Setup user profile succeeds!")
 }
 
 module.exports = {
