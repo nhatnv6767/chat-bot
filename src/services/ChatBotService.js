@@ -51,13 +51,46 @@ let handleGetStarted = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
             let username = await getUserName(sender_psid)
-            let response = { "text": `Chào mừng bạn ${username} đến với nhà hàng của chúng tôi.` }
-            await callSendAPI(sender_psid, response)
+            let first_response = { "text": `Chào mừng bạn ${username} đến với nhà hàng của chúng tôi.` }
+            await callSendAPI(sender_psid, first_response)
+
             resolve("done")
         } catch (e) {
             reject(e);
         }
     })
+}
+
+let sendGetStartedTemplate = () => {
+
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Is this the right picture?",
+                    "subtitle": "Tap a button to answer.",
+                    "image_url": attachment_url,
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "Yes!",
+                            "payload": "yes",
+                        },
+                        {
+                            "type": "postback",
+                            "title": "No!",
+                            "payload": "no",
+                        }
+                    ],
+                }]
+            }
+        }
+    }
+
+
+    return response
 }
 
 module.exports = {
