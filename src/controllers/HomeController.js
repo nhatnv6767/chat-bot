@@ -190,11 +190,16 @@ let setupProfile = async (req, res) => {
     return res.send("Setup user profile succeeds!")
 }
 
+let setupPersistentMenu = (req, res) => {
+    
+}
+
 module.exports = {
     getHomePage: getHomePage,
     postWebhook: postWebhook,
     getWebhook: getWebhook,
     setupProfile: setupProfile,
+    setupPersistentMenu: setupPersistentMenu,
 }
 
 // curl -X GET "localhost:8080/webhook?hub.verify_token=isJustRandomString&hub.challenge=CHALLENGE_ACCEPTED&hub.mode=subscribe"
