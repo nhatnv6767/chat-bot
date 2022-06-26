@@ -37,7 +37,9 @@ let getUserName = async (sender_psid) => {
         console.log(body)
         if (!err) {
             let response = JSON.parse(res)
+            username = `${response.last_name} ${response.first_name}`
             console.log("CHECK USER SEND MESSAGE:", response)
+            console.log("CHECK USERNAME SEND MESSAGE:", username)
             console.log('message sent!')
         } else {
             console.error("Unable to send message:" + err);
