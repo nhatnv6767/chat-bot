@@ -7,6 +7,10 @@ const IMAGE_MAIN_MENU_1 = "https://bit.ly/3HTBICf"
 const IMAGE_MAIN_MENU_2 = "https://bit.ly/3u3dKz3"
 const IMAGE_MAIN_MENU_3 = "https://bit.ly/3QJAqOx"
 
+const IMAGE_VIEW_APPETIZERS = "https://bit.ly/3QLYAaZ"
+const IMAGE_VIEW_FISH = "https://bit.ly/3HPYvz3"
+const IMAGE_VIEW_MEAT = "https://bit.ly/3xNHCQI"
+
 let callSendAPI = (sender_psid, response) => {
     // Construct the message body
     let request_body = {
@@ -201,7 +205,7 @@ let getLunchMenuTemplate = () => {
                     {
                         "title": "Món tráng miệng",
                         "subtitle": "Nhà hàng có nhiều món tráng miệng hấp dẫn",
-                        "image_url": IMAGE_MAIN_MENU_1,
+                        "image_url": IMAGE_VIEW_APPETIZERS,
                         "buttons": [
                             {
                                 // Appetizers
@@ -214,7 +218,7 @@ let getLunchMenuTemplate = () => {
                     {
                         "title": "Các loại cá",
                         "subtitle": "Nhiều món cá phù hợp với mọi loại khẩu vị",
-                        "image_url": IMAGE_MAIN_MENU_2,
+                        "image_url": IMAGE_VIEW_FISH,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -226,7 +230,7 @@ let getLunchMenuTemplate = () => {
                     {
                         "title": "Thịt hun khói",
                         "subtitle": "Thơm ngon, hợp vệ sinh.",
-                        "image_url": IMAGE_MAIN_MENU_3,
+                        "image_url": IMAGE_VIEW_MEAT,
                         "buttons": [
                             {
                                 "type": "postback",
