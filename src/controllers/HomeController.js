@@ -154,10 +154,15 @@ function callSendAPI(sender_psid, response) {
     });
 }
 
+let setupProfile = (req, res) => {
+
+}
+
 module.exports = {
     getHomePage: getHomePage,
     postWebhook: postWebhook,
     getWebhook: getWebhook,
+    setupProfile: setupProfile,
 }
 
 // curl -X GET "localhost:8080/webhook?hub.verify_token=isJustRandomString&hub.challenge=CHALLENGE_ACCEPTED&hub.mode=subscribe"
