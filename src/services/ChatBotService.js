@@ -105,6 +105,11 @@ let sendGetStartedTemplate = () => {
     return response
 }
 
+let handleSendMainMenu = (sender_psid) => {
+    
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
+    handleSendMainMenu: handleSendMainMenu,
 }
