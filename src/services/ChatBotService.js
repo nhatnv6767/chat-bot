@@ -30,7 +30,7 @@ let handleGetStarted = () => {
     return new Promise(async (resolve, reject) => {
         try {
             let response = { "text": "Chào mừng bạn XXX đến với nhà hàng của chúng tôi." }
-            await this.callSendAPI(response)
+            await callSendAPI(response)
             resolve("done")
         } catch (e) {
             reject(e);
