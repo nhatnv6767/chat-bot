@@ -3,6 +3,9 @@ import request from "request";
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 const IMAGE_GET_STARTED = "https://bit.ly/3ng47Jt"
+const IMAGE_MAIN_MENU_1 = "https://bit.ly/3HTBICf"
+const IMAGE_MAIN_MENU_2 = "https://bit.ly/3u3dKz3"
+const IMAGE_MAIN_MENU_3 = "https://bit.ly/3QJAqOx"
 
 let callSendAPI = (sender_psid, response) => {
     // Construct the message body
@@ -119,10 +122,6 @@ let handleSendMainMenu = (sender_psid) => {
 
 let getMainMenuTemplate = () => {
 
-    let MAIN_MENU = "https://bit.ly/3HTBICf"
-    let TIME_OPEN = "https://bit.ly/3u3dKz3"
-    let SPACE_RESTAURANT = "https://bit.ly/3QJAqOx"
-
     let response = {
         "attachment": {
             "type": "template",
@@ -132,7 +131,7 @@ let getMainMenuTemplate = () => {
                     {
                     "title": "Menu của nhà hàng",
                     "subtitle": "Chúng tôi hân hạnh mang tới cho bạn thực đơn phong phú cho bữa trưa và bữa tối.",
-                    "image_url": MAIN_MENU,
+                    "image_url": IMAGE_MAIN_MENU_1,
                     "buttons": [
                         {
                             "type": "postback",
@@ -149,7 +148,7 @@ let getMainMenuTemplate = () => {
                     {
                         "title": "Giờ mở cửa",
                         "subtitle": "T2-T6 10h-23h | T7 17h-22h | CN 17h-21h",
-                        "image_url": TIME_OPEN,
+                        "image_url": IMAGE_MAIN_MENU_2,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -161,7 +160,7 @@ let getMainMenuTemplate = () => {
                     {
                         "title": "Không gian nhà hàng",
                         "subtitle": "Nhà hàng có sức chứa lên tới 300 khách và phù hợp cho mọi thể loại bữa tiệc.",
-                        "image_url": SPACE_RESTAURANT,
+                        "image_url": IMAGE_MAIN_MENU_3,
                         "buttons": [
                             {
                                 "type": "postback",
