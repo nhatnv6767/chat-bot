@@ -160,7 +160,7 @@ let setupProfile = (req, res) => {
     // call facebook api profile
     // Construct the message body
     let request_body = {
-        "get_started" : "GET_STARTED",
+        "get_started" : {"payload":"GET_STARTED"},
         "whitelisted_domains": "https://chat-bot-vi.herokuapp.com/"
     }
     // Send the HTTP request to the Messenger Platform
