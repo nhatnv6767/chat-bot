@@ -82,13 +82,18 @@ let sendGetStartedTemplate = () => {
                     "buttons": [
                         {
                             "type": "postback",
-                            "title": "Yes!",
-                            "payload": "yes",
+                            "title": "THỰC ĐƠN CHÍNH",
+                            "payload": "MAIN_MENU",
                         },
                         {
                             "type": "postback",
-                            "title": "No!",
-                            "payload": "no",
+                            "title": "ĐẶT BÀN",
+                            "payload": "RESERVE_TABLE",
+                        },
+                        {
+                            "type": "postback",
+                            "title": "HƯỚNG DẪN SỬ DỤNG BOT",
+                            "payload": "GUIDE_TO_USE",
                         }
                     ],
                 }]
