@@ -1,4 +1,5 @@
 require("dotenv").config()
+import request from "request";
 
 let getHomePage = (req, res) => {
     // because config viewEngine
