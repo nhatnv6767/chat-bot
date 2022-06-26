@@ -148,6 +148,12 @@ async function handlePostback(sender_psid, received_postback) {
         case "DINNER_MENU":
             await chatbotService.handleSendDinnerMenu(sender_psid)
             break;
+        case "VIEW_APPETIZERS":
+            break;
+        case "VIEW_FISH":
+            break;
+        case "VIEW_MEAT":
+            break;
 
             default:
                 response = { "text": `Oops! I don't know response with postback ${payload}.` }
