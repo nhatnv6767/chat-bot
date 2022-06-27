@@ -269,12 +269,18 @@ let setupPersistentMenu = async (req, res) => {
     return res.send("Setup persistent menu succeeds!")
 }
 
+let handleReserveTable = (req, res) => {
+    // because config viewEngine
+    return res.render('reserve-table.ejs')
+}
+
 module.exports = {
     getHomePage: getHomePage,
     postWebhook: postWebhook,
     getWebhook: getWebhook,
     setupProfile: setupProfile,
     setupPersistentMenu: setupPersistentMenu,
+    handleReserveTable: handleReserveTable,
 }
 
 // curl -X GET "localhost:8080/webhook?hub.verify_token=isJustRandomString&hub.challenge=CHALLENGE_ACCEPTED&hub.mode=subscribe"
