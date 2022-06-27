@@ -429,45 +429,22 @@ let getDetailViewFishTemplate = () => {
                 "template_type": "generic",
                 "elements": [
                     {
-                        "title": "Menu của nhà hàng",
-                        "subtitle": "Chúng tôi hân hạnh mang tới cho bạn thực đơn phong phú cho bữa trưa và bữa tối.",
+                        "title": "Cá hồi Châu Âu",
+                        "subtitle": "350.000đ/1kg",
                         "image_url": IMAGE_DETAIL_FISH_1,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "BỮA TRƯA",
-                                "payload": "LUNCH_MENU",
-                            },
-                            {
-                                "type": "postback",
-                                "title": "BỮA TỐI",
-                                "payload": "DINNER_MENU",
-                            }
-                        ],
+
                     },
                     {
-                        "title": "Giờ mở cửa",
-                        "subtitle": "T2-T6 10h-23h | T7 17h-22h | CN 17h-21h",
+                        "title": "Cá chép om dưa",
+                        "subtitle": "200.000đ/1kg",
                         "image_url": IMAGE_DETAIL_FISH_2,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "ĐẶT BÀN",
-                                "payload": "RESERVE_TABLE",
-                            }
-                        ],
+
                     },
                     {
-                        "title": "Không gian nhà hàng",
-                        "subtitle": "Nhà hàng có sức chứa lên tới 300 khách và phù hợp cho mọi thể loại bữa tiệc.",
+                        "title": "Cá đuối nướng",
+                        "subtitle": "300.000đ/1kg",
                         "image_url": IMAGE_DETAIL_FISH_3,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "CHI TIẾT",
-                                "payload": "SHOW_ROOMS",
-                            }
-                        ],
+
                     },
 
                     {
@@ -512,45 +489,22 @@ let getDetailViewMeatTemplate = () => {
                 "template_type": "generic",
                 "elements": [
                     {
-                        "title": "Menu của nhà hàng",
-                        "subtitle": "Chúng tôi hân hạnh mang tới cho bạn thực đơn phong phú cho bữa trưa và bữa tối.",
+                        "title": "Thịt bò kobe",
+                        "subtitle": "500.000đ/1kg",
                         "image_url": IMAGE_DETAIL_MEAT_1,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "BỮA TRƯA",
-                                "payload": "LUNCH_MENU",
-                            },
-                            {
-                                "type": "postback",
-                                "title": "BỮA TỐI",
-                                "payload": "DINNER_MENU",
-                            }
-                        ],
+
                     },
                     {
-                        "title": "Giờ mở cửa",
-                        "subtitle": "T2-T6 10h-23h | T7 17h-22h | CN 17h-21h",
+                        "title": "Thịt bò Châu Mỹ",
+                        "subtitle": "450.000đ/1kg",
                         "image_url": IMAGE_DETAIL_MEAT_2,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "ĐẶT BÀN",
-                                "payload": "RESERVE_TABLE",
-                            }
-                        ],
+
                     },
                     {
-                        "title": "Không gian nhà hàng",
-                        "subtitle": "Nhà hàng có sức chứa lên tới 300 khách và phù hợp cho mọi thể loại bữa tiệc.",
+                        "title": "Thịt bò sốt vang",
+                        "subtitle": "350.000đ/1kg",
                         "image_url": IMAGE_DETAIL_MEAT_3,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "CHI TIẾT",
-                                "payload": "SHOW_ROOMS",
-                            }
-                        ],
+
                     },
                     {
                         "title": "Quay trở lại",
