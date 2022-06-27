@@ -27,7 +27,7 @@ const IMAGE_DETAIL_MEAT_1 = "https://bit.ly/3bsPnnN"
 const IMAGE_DETAIL_MEAT_2 = "https://bit.ly/3QV0ne6"
 const IMAGE_DETAIL_MEAT_3 = "https://bit.ly/3OrvBI2"
 
-let callSendAPI = (sender_psid, response) => {
+let callSendAPI = async (sender_psid, response) => {
     // Construct the message body
     let request_body = {
         "recipient": {
@@ -35,6 +35,9 @@ let callSendAPI = (sender_psid, response) => {
         },
         "message": response
     }
+
+    await sendMarkReadMessage(sender_psid)
+    await sendTypingOn(sender_psid)
     // Send the HTTP request to the Messenger Platform
     request({
         "uri": "https://graph.facebook.com/v14.0/me/messages",
@@ -46,6 +49,54 @@ let callSendAPI = (sender_psid, response) => {
             console.log('message sent!')
         } else {
             console.error("Unable to send message:" + err);
+        }
+    });
+}
+
+let sendTypingOn = (sender_psid) => {
+    // Construct the message body
+    let request_body = {
+        "recipient": {
+            "id": sender_psid
+        },
+        "sender_action":"typing_on"
+    }
+    // Send the HTTP request to the Messenger Platform
+    request({
+        // 101038356003024
+        "uri": "https://graph.facebook.com/v14.0/me/messages",
+        "qs": { "access_token": PAGE_ACCESS_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            console.log('sendTypingOn!')
+        } else {
+            console.error("Unable to sendTypingOn:" + err);
+        }
+    });
+}
+
+let sendMarkReadMessage = (sender_psid) => {
+    // Construct the message body
+    let request_body = {
+        "recipient": {
+            "id": sender_psid
+        },
+        "sender_action":"mark_seen"
+    }
+    // Send the HTTP request to the Messenger Platform
+    request({
+        // 101038356003024
+        "uri": "https://graph.facebook.com/v14.0/me/messages",
+        "qs": { "access_token": PAGE_ACCESS_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            console.log('sendMarkReadMessage!')
+        } else {
+            console.error("Unable to sendMarkReadMessage:" + err);
         }
     });
 }
