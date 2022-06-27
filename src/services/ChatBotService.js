@@ -337,10 +337,22 @@ let handleBackToMainMenu = async (sender_psid) => {
     await handleSendMainMenu(sender_psid)
 }
 
+let handleDetailViewAppetizer = async (sender_psid) => {
+}
+
+let handleDetailViewFish = async (sender_psid) => {
+}
+
+let handleDetailViewMeat = async (sender_psid) => {
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
     handleSendMainMenu: handleSendMainMenu,
     handleSendLunchMenu: handleSendLunchMenu,
     handleSendDinnerMenu: handleSendDinnerMenu,
     handleBackToMainMenu: handleBackToMainMenu,
+    handleDetailViewAppetizer: handleDetailViewAppetizer,
+    handleDetailViewFish: handleDetailViewFish,
+    handleDetailViewMeat: handleDetailViewMeat,
 }
