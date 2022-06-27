@@ -1,3 +1,6 @@
+require("dotenv").config()
+const APP_ID = process.env.APP_ID
+
 (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {return;}
@@ -9,7 +12,7 @@
 window.extAsyncInit = function() {
     // the Messenger Extensions JS SDK is done loading
 
-    MessengerExtensions.getContext('101038356003024',
+    MessengerExtensions.getContext("449310003232049",
         function success(thread_context){
             // success
         },
