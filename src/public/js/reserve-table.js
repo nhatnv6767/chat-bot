@@ -6,3 +6,6 @@
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'Messenger'));
 
+window.extAsyncInit = function() {
+    // the Messenger Extensions JS SDK is done loading
+};
