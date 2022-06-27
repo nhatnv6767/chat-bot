@@ -12,5 +12,6 @@ B1: https://developers.facebook.com/docs/messenger-platform/getting-started/webh
 - https://developers.facebook.com/docs/messenger-platform/send-messages/templates/
 - https://developers.facebook.com/docs/messenger-platform/webview/
 - https://developers.facebook.com/docs/messenger-platform/webview/extensions/
+- https://developers.facebook.com/docs/messenger-platform/reference/messenger-extensions-sdk/getContext
 - 
 
