@@ -156,6 +156,7 @@ async function handlePostback(sender_psid, received_postback) {
             break;
 
         case "BACK_TO_MAIN_MENU":
+            await chatbotService.handleBackToMainMenu(sender_psid)
             break;
 
             default:
