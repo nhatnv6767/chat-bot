@@ -27,7 +27,7 @@ const IMAGE_DETAIL_MEAT_1 = "https://bit.ly/3bsPnnN"
 const IMAGE_DETAIL_MEAT_2 = "https://bit.ly/3QV0ne6"
 const IMAGE_DETAIL_MEAT_3 = "https://bit.ly/3OrvBI2"
 
-const IMAGE_DETAIL_ROOMS = ""
+const IMAGE_DETAIL_ROOMS = "https://bit.ly/3nlgCUc"
 
 let callSendAPI = async (sender_psid, response) => {
     // Construct the message body
@@ -615,10 +615,12 @@ let getImageRoomsTemplates = () => {
             }
         }
     }
+
+    return response
 }
 
 let getButtonRoomsTemplate = () => {
-    
+
 }
 
 module.exports = {
