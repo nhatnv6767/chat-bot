@@ -349,43 +349,52 @@ let getDinnerMenuTemplate = () => {
                 "template_type": "generic",
                 "elements": [
                     {
-                        "title": "Menu của nhà hàng",
-                        "subtitle": "Chúng tôi hân hạnh mang tới cho bạn thực đơn phong phú cho bữa trưa và bữa tối.",
-                        "image_url": IMAGE_MAIN_MENU_1,
+                        "title": "Món tráng miệng",
+                        "subtitle": "Nhà hàng có nhiều món tráng miệng hấp dẫn",
+                        "image_url": IMAGE_VIEW_APPETIZERS,
                         "buttons": [
                             {
+                                // Appetizers
                                 "type": "postback",
-                                "title": "BỮA TRƯA",
-                                "payload": "LUNCH_MENU",
-                            },
-                            {
-                                "type": "postback",
-                                "title": "BỮA TỐI",
-                                "payload": "DINNER_MENU",
+                                "title": "XEM CHI TIẾT",
+                                "payload": "VIEW_APPETIZERS",
                             }
                         ],
                     },
                     {
-                        "title": "Giờ mở cửa",
-                        "subtitle": "T2-T6 10h-23h | T7 17h-22h | CN 17h-21h",
-                        "image_url": IMAGE_MAIN_MENU_2,
+                        "title": "Các loại cá",
+                        "subtitle": "Nhiều món cá phù hợp với mọi loại khẩu vị",
+                        "image_url": IMAGE_VIEW_FISH,
                         "buttons": [
                             {
                                 "type": "postback",
-                                "title": "ĐẶT BÀN",
-                                "payload": "RESERVE_TABLE",
+                                "title": "XEM CHI TIẾT",
+                                "payload": "VIEW_FISH",
                             }
                         ],
                     },
                     {
-                        "title": "Không gian nhà hàng",
-                        "subtitle": "Nhà hàng có sức chứa lên tới 300 khách và phù hợp cho mọi thể loại bữa tiệc.",
-                        "image_url": IMAGE_MAIN_MENU_3,
+                        "title": "Thịt",
+                        "subtitle": "Thơm ngon, hợp vệ sinh.",
+                        "image_url": IMAGE_VIEW_MEAT,
                         "buttons": [
                             {
                                 "type": "postback",
-                                "title": "CHI TIẾT",
-                                "payload": "SHOW_ROOMS",
+                                "title": "XEM CHI TIẾT",
+                                "payload": "VIEW_MEAT",
+                            }
+                        ],
+                    },
+
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "Quay trở lại menu chính",
+                        "image_url": IMAGE_BACK_MAIN_MENU,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MAIN_MENU",
                             }
                         ],
                     }
