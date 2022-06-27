@@ -13,6 +13,20 @@ const IMAGE_VIEW_MEAT = "https://bit.ly/3xNHCQI"
 
 const IMAGE_BACK_MAIN_MENU = "https://bit.ly/3xPcMaA"
 
+const IMAGE_DETAIL_APPETIZER_1 = ""
+const IMAGE_DETAIL_APPETIZER_2 = ""
+const IMAGE_DETAIL_APPETIZER_3 = ""
+
+
+const IMAGE_DETAIL_FISH_1 = ""
+const IMAGE_DETAIL_FISH_2 = ""
+const IMAGE_DETAIL_FISH_3 = ""
+
+
+const IMAGE_DETAIL_MEAT_1 = ""
+const IMAGE_DETAIL_MEAT_2 = ""
+const IMAGE_DETAIL_MEAT_3 = ""
+
 let callSendAPI = (sender_psid, response) => {
     // Construct the message body
     let request_body = {
@@ -358,43 +372,30 @@ let getDetailViewApppetizerTemplate = () => {
                 "template_type": "generic",
                 "elements": [
                     {
-                        "title": "Menu của nhà hàng",
-                        "subtitle": "Chúng tôi hân hạnh mang tới cho bạn thực đơn phong phú cho bữa trưa và bữa tối.",
-                        "image_url": IMAGE_MAIN_MENU_1,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "BỮA TRƯA",
-                                "payload": "LUNCH_MENU",
-                            },
-                            {
-                                "type": "postback",
-                                "title": "BỮA TỐI",
-                                "payload": "DINNER_MENU",
-                            }
-                        ],
+                        "title": "Dưa hấu",
+                        "subtitle": "50.000đ/1kg",
+                        "image_url": IMAGE_DETAIL_APPETIZER_1,
                     },
                     {
-                        "title": "Giờ mở cửa",
-                        "subtitle": "T2-T6 10h-23h | T7 17h-22h | CN 17h-21h",
-                        "image_url": IMAGE_MAIN_MENU_2,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "ĐẶT BÀN",
-                                "payload": "RESERVE_TABLE",
-                            }
-                        ],
+                        "title": "Xoài",
+                        "subtitle": "20.000đ/1kg",
+                        "image_url": IMAGE_DETAIL_APPETIZER_2,
                     },
                     {
-                        "title": "Không gian nhà hàng",
-                        "subtitle": "Nhà hàng có sức chứa lên tới 300 khách và phù hợp cho mọi thể loại bữa tiệc.",
-                        "image_url": IMAGE_MAIN_MENU_3,
+                        "title": "Ổi",
+                        "subtitle": "15.000đ/1kg",
+                        "image_url": IMAGE_DETAIL_APPETIZER_3,
+
+                    },
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "Quay trở lại menu chính",
+                        "image_url": IMAGE_BACK_MAIN_MENU,
                         "buttons": [
                             {
                                 "type": "postback",
-                                "title": "CHI TIẾT",
-                                "payload": "SHOW_ROOMS",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MAIN_MENU",
                             }
                         ],
                     }
@@ -430,7 +431,7 @@ let getDetailViewFishTemplate = () => {
                     {
                         "title": "Menu của nhà hàng",
                         "subtitle": "Chúng tôi hân hạnh mang tới cho bạn thực đơn phong phú cho bữa trưa và bữa tối.",
-                        "image_url": IMAGE_MAIN_MENU_1,
+                        "image_url": IMAGE_DETAIL_FISH_1,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -447,7 +448,7 @@ let getDetailViewFishTemplate = () => {
                     {
                         "title": "Giờ mở cửa",
                         "subtitle": "T2-T6 10h-23h | T7 17h-22h | CN 17h-21h",
-                        "image_url": IMAGE_MAIN_MENU_2,
+                        "image_url": IMAGE_DETAIL_FISH_2,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -459,12 +460,25 @@ let getDetailViewFishTemplate = () => {
                     {
                         "title": "Không gian nhà hàng",
                         "subtitle": "Nhà hàng có sức chứa lên tới 300 khách và phù hợp cho mọi thể loại bữa tiệc.",
-                        "image_url": IMAGE_MAIN_MENU_3,
+                        "image_url": IMAGE_DETAIL_FISH_3,
                         "buttons": [
                             {
                                 "type": "postback",
                                 "title": "CHI TIẾT",
                                 "payload": "SHOW_ROOMS",
+                            }
+                        ],
+                    },
+
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "Quay trở lại menu chính",
+                        "image_url": IMAGE_BACK_MAIN_MENU,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MAIN_MENU",
                             }
                         ],
                     }
@@ -500,7 +514,7 @@ let getDetailViewMeatTemplate = () => {
                     {
                         "title": "Menu của nhà hàng",
                         "subtitle": "Chúng tôi hân hạnh mang tới cho bạn thực đơn phong phú cho bữa trưa và bữa tối.",
-                        "image_url": IMAGE_MAIN_MENU_1,
+                        "image_url": IMAGE_DETAIL_MEAT_1,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -517,7 +531,7 @@ let getDetailViewMeatTemplate = () => {
                     {
                         "title": "Giờ mở cửa",
                         "subtitle": "T2-T6 10h-23h | T7 17h-22h | CN 17h-21h",
-                        "image_url": IMAGE_MAIN_MENU_2,
+                        "image_url": IMAGE_DETAIL_MEAT_2,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -529,12 +543,24 @@ let getDetailViewMeatTemplate = () => {
                     {
                         "title": "Không gian nhà hàng",
                         "subtitle": "Nhà hàng có sức chứa lên tới 300 khách và phù hợp cho mọi thể loại bữa tiệc.",
-                        "image_url": IMAGE_MAIN_MENU_3,
+                        "image_url": IMAGE_DETAIL_MEAT_3,
                         "buttons": [
                             {
                                 "type": "postback",
                                 "title": "CHI TIẾT",
                                 "payload": "SHOW_ROOMS",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "Quay trở lại menu chính",
+                        "image_url": IMAGE_BACK_MAIN_MENU,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MAIN_MENU",
                             }
                         ],
                     }
