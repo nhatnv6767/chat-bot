@@ -17,11 +17,11 @@ window.extAsyncInit = function() {
             // success
             //set psid to input
             $("#psid").val(thread_context.psid);
-            handleClickButtonFindOrder();
+            handleClickButtonReserveTable();
         },
         function error(err){
             // error
-            console.log(err);
+            console.log("Lỗi đặt bàn: ",err);
         }
     );
 };
