@@ -161,9 +161,11 @@ let getStartedTemplate = () => {
                             "payload": "MAIN_MENU",
                         },
                         {
-                            "type": "postback",
                             "title": "ĐẶT BÀN",
-                            "payload": "RESERVE_TABLE",
+                            "type": "web_url",
+                            "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                            "webview_height_ratio": "tall",
+                            "messenger_extensions": true //false: open the webview in new tab
                         },
                         {
                             "type": "postback",
@@ -224,9 +226,11 @@ let getMainMenuTemplate = () => {
                         "image_url": IMAGE_MAIN_MENU_2,
                         "buttons": [
                             {
-                                "type": "postback",
                                 "title": "ĐẶT BÀN",
-                                "payload": "RESERVE_TABLE",
+                                "type": "web_url",
+                                "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                                "webview_height_ratio": "tall",
+                                "messenger_extensions": true //false: open the webview in new tab
                             }
                         ],
                     },
@@ -634,9 +638,11 @@ let getButtonRoomsTemplate = () => {
                         "payload":"MAIN_MENU"
                     },
                     {
-                        "type":"postback",
-                        "title":"ĐẶT BÀN",
-                        "payload":"RESERVE_TABLE"
+                        "title": "ĐẶT BÀN",
+                        "type": "web_url",
+                        "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                        "webview_height_ratio": "tall",
+                        "messenger_extensions": true //false: open the webview in new tab
                     }
 
                 ]
