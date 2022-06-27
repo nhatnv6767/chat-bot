@@ -155,6 +155,9 @@ async function handlePostback(sender_psid, received_postback) {
         case "VIEW_MEAT":
             break;
 
+        case "BACK_TO_MAIN_MENU":
+            break;
+
             default:
                 response = { "text": `Oops! I don't know response with postback ${payload}.` }
     }

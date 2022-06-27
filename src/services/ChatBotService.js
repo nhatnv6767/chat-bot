@@ -11,6 +11,8 @@ const IMAGE_VIEW_APPETIZERS = "https://bit.ly/3QLYAaZ"
 const IMAGE_VIEW_FISH = "https://bit.ly/3HPYvz3"
 const IMAGE_VIEW_MEAT = "https://bit.ly/3xNHCQI"
 
+const IMAGE_BACK_MAIN_MENU = "https://bit.ly/3xPcMaA"
+
 let callSendAPI = (sender_psid, response) => {
     // Construct the message body
     let request_body = {
@@ -236,6 +238,19 @@ let getLunchMenuTemplate = () => {
                                 "type": "postback",
                                 "title": "XEM CHI TIẾT",
                                 "payload": "VIEW_MEAT",
+                            }
+                        ],
+                    },
+
+                    {
+                        "title": "Quay trở lại",
+                        "subtitle": "Quay trở lại menu chính",
+                        "image_url": IMAGE_BACK_MAIN_MENU,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "QUAY TRỞ LẠI",
+                                "payload": "BACK_TO_MAIN_MENU",
                             }
                         ],
                     }
