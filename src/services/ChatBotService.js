@@ -13,19 +13,19 @@ const IMAGE_VIEW_MEAT = "https://bit.ly/3xNHCQI"
 
 const IMAGE_BACK_MAIN_MENU = "https://bit.ly/3xPcMaA"
 
-const IMAGE_DETAIL_APPETIZER_1 = ""
-const IMAGE_DETAIL_APPETIZER_2 = ""
-const IMAGE_DETAIL_APPETIZER_3 = ""
+const IMAGE_DETAIL_APPETIZER_1 = "https://bit.ly/3nkp2eh"
+const IMAGE_DETAIL_APPETIZER_2 = "https://bit.ly/3bjzXCb"
+const IMAGE_DETAIL_APPETIZER_3 = "https://bit.ly/3nhK6SH"
 
 
-const IMAGE_DETAIL_FISH_1 = ""
-const IMAGE_DETAIL_FISH_2 = ""
-const IMAGE_DETAIL_FISH_3 = ""
+const IMAGE_DETAIL_FISH_1 = "https://bit.ly/3nl7vTb"
+const IMAGE_DETAIL_FISH_2 = "https://bit.ly/3ynZQtL"
+const IMAGE_DETAIL_FISH_3 = "https://bit.ly/39SZUYW"
 
 
-const IMAGE_DETAIL_MEAT_1 = ""
-const IMAGE_DETAIL_MEAT_2 = ""
-const IMAGE_DETAIL_MEAT_3 = ""
+const IMAGE_DETAIL_MEAT_1 = "https://bit.ly/3bsPnnN"
+const IMAGE_DETAIL_MEAT_2 = "https://bit.ly/3QV0ne6"
+const IMAGE_DETAIL_MEAT_3 = "https://bit.ly/3OrvBI2"
 
 let callSendAPI = (sender_psid, response) => {
     // Construct the message body
@@ -489,7 +489,7 @@ let getDetailViewMeatTemplate = () => {
                 "template_type": "generic",
                 "elements": [
                     {
-                        "title": "Thịt bò kobe",
+                        "title": "Thịt bò Kobe",
                         "subtitle": "500.000đ/1kg",
                         "image_url": IMAGE_DETAIL_MEAT_1,
 
