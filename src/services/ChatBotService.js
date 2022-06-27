@@ -244,7 +244,7 @@ let getLunchMenuTemplate = () => {
                         ],
                     },
                     {
-                        "title": "Thịt hun khói",
+                        "title": "Thịt",
                         "subtitle": "Thơm ngon, hợp vệ sinh.",
                         "image_url": IMAGE_VIEW_MEAT,
                         "buttons": [
