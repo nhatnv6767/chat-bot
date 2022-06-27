@@ -588,7 +588,19 @@ let getDetailViewMeatTemplate = () => {
 }
 
 let handleShowDetailRooms = (sender_psid) => {
-    
+    return new Promise(async (resolve, reject) => {
+        try {
+            // send an image
+            let first_response = getMainMenuTemplate()
+            // send a button template: text, buttons
+            let second_response = getMainMenuTemplate()
+            await callSendAPI(sender_psid, first_response)
+            await callSendAPI(sender_psid, second_response)
+            resolve("done")
+        } catch (e) {
+            reject(e);
+        }
+    })
 }
 
 module.exports = {
