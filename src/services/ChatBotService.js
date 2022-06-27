@@ -587,6 +587,10 @@ let getDetailViewMeatTemplate = () => {
     return response
 }
 
+let handleShowDetailRooms = (sender_psid) => {
+    
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
     handleSendMainMenu: handleSendMainMenu,
@@ -596,4 +600,5 @@ module.exports = {
     handleDetailViewAppetizer: handleDetailViewAppetizer,
     handleDetailViewFish: handleDetailViewFish,
     handleDetailViewMeat: handleDetailViewMeat,
+    handleShowDetailRooms: handleShowDetailRooms,
 }
