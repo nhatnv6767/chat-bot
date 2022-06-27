@@ -274,6 +274,10 @@ let handleReserveTable = (req, res) => {
     return res.render('reserve-table.ejs')
 }
 
+let handlePostReserveTable = (req, res) => {
+    
+}
+
 module.exports = {
     getHomePage: getHomePage,
     postWebhook: postWebhook,
@@ -281,6 +285,7 @@ module.exports = {
     setupProfile: setupProfile,
     setupPersistentMenu: setupPersistentMenu,
     handleReserveTable: handleReserveTable,
+    handlePostReserveTable: handlePostReserveTable,
 }
 
 // curl -X GET "localhost:8080/webhook?hub.verify_token=isJustRandomString&hub.challenge=CHALLENGE_ACCEPTED&hub.mode=subscribe"
