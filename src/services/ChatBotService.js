@@ -626,12 +626,17 @@ let getButtonRoomsTemplate = () => {
             "type":"template",
             "payload":{
                 "template_type":"button",
-                "text":"What do you want to do next?",
+                "text":"Nhà hàng có thể phục vụ tối đa 300 khách",
                 "buttons":[
                     {
-                        "type":"web_url",
-                        "url":"https://www.messenger.com",
-                        "title":"Visit Messenger"
+                        "type":"postback",
+                        "url":"MENU CHÍNH",
+                        "title":"MAIN_MENU"
+                    },
+                    {
+                        "type":"postback",
+                        "url":"ĐẶT BÀN",
+                        "title":"RESERVE_TABLE"
                     }
 
                 ]
