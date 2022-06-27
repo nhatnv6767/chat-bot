@@ -275,7 +275,7 @@ let handleReserveTable = (req, res) => {
 }
 
 let handlePostReserveTable = (req, res) => {
-    
+
 }
 
 module.exports = {
