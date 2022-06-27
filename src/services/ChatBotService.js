@@ -7,7 +7,7 @@ const IMAGE_MAIN_MENU_1 = "https://bit.ly/3HTBICf"
 const IMAGE_MAIN_MENU_2 = "https://bit.ly/3u3dKz3"
 const IMAGE_MAIN_MENU_3 = "https://bit.ly/3QJAqOx"
 
-const IMAGE_VIEW_APPETIZERS = "https://bit.ly/3QLYAaZ"
+const IMAGE_VIEW_APPETIZERS = "https://bit.ly/3OOOSD7"
 const IMAGE_VIEW_FISH = "https://bit.ly/3HPYvz3"
 const IMAGE_VIEW_MEAT = "https://bit.ly/3xNHCQI"
 
