@@ -2,7 +2,7 @@ require("dotenv").config()
 import request from "request";
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
-const IMAGE_GET_STARTED = "https://bit.ly/3ng47Jt"
+const IMAGE_GET_STARTED = "https://bit.ly/3xTWihv"
 const IMAGE_MAIN_MENU_1 = "https://bit.ly/3HTBICf"
 const IMAGE_MAIN_MENU_2 = "https://bit.ly/3u3dKz3"
 const IMAGE_MAIN_MENU_3 = "https://bit.ly/3QJAqOx"
