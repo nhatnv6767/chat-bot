@@ -15,9 +15,13 @@ window.extAsyncInit = function() {
     MessengerExtensions.getContext("449310003232049",
         function success(thread_context){
             // success
+            //set psid to input
+            $("#psid").val(thread_context.psid);
+            handleClickButtonFindOrder();
         },
         function error(err){
             // error
+            console.log(err);
         }
     );
 };
