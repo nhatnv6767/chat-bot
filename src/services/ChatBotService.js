@@ -27,6 +27,8 @@ const IMAGE_DETAIL_MEAT_1 = "https://bit.ly/3bsPnnN"
 const IMAGE_DETAIL_MEAT_2 = "https://bit.ly/3QV0ne6"
 const IMAGE_DETAIL_MEAT_3 = "https://bit.ly/3OrvBI2"
 
+const IMAGE_DETAIL_ROOMS = ""
+
 let callSendAPI = async (sender_psid, response) => {
     // Construct the message body
     let request_body = {
@@ -591,9 +593,9 @@ let handleShowDetailRooms = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
             // send an image
-            let first_response = getMainMenuTemplate()
+            let first_response = getImageRoomsTemplates()
             // send a button template: text, buttons
-            let second_response = getMainMenuTemplate()
+            let second_response = getButtonRoomsTemplate()
             await callSendAPI(sender_psid, first_response)
             await callSendAPI(sender_psid, second_response)
             resolve("done")
@@ -601,6 +603,22 @@ let handleShowDetailRooms = (sender_psid) => {
             reject(e);
         }
     })
+}
+
+let getImageRoomsTemplates = () => {
+    let response = {
+        "attachment":{
+            "type":"image",
+            "payload":{
+                "url": IMAGE_DETAIL_ROOMS,
+                "is_reusable":true
+            }
+        }
+    }
+}
+
+let getButtonRoomsTemplate = () => {
+    
 }
 
 module.exports = {
