@@ -630,13 +630,13 @@ let getButtonRoomsTemplate = () => {
                 "buttons":[
                     {
                         "type":"postback",
-                        "url":"MENU CHÍNH",
-                        "title":"MAIN_MENU"
+                        "title":"MENU CHÍNH",
+                        "payload":"MAIN_MENU"
                     },
                     {
                         "type":"postback",
-                        "url":"ĐẶT BÀN",
-                        "title":"RESERVE_TABLE"
+                        "title":"ĐẶT BÀN",
+                        "payload":"RESERVE_TABLE"
                     }
 
                 ]
