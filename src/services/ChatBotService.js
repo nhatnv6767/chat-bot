@@ -164,7 +164,7 @@ let getStartedTemplate = () => {
                             "title": "ĐẶT BÀN",
                             "type": "web_url",
                             "url": `${process.env.URL_WEB_VIEW_ORDER}`,
-                            "webview_height_ratio": "tall",
+                            "webview_height_ratio": "full",
                             "messenger_extensions": true //false: open the webview in new tab
                         },
                         {
