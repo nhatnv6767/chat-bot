@@ -1,15 +1,16 @@
-(function (d, s, id) {
+(function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) { return; }
+    if (d.getElementById(id)) {return;}
     js = d.createElement(s); js.id = id;
     js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'Messenger'));
 
-window.extAsyncInit = function () {
+window.extAsyncInit = function() {
     // the Messenger Extensions JS SDK is done loading
     let isSupported = MessengerExtensions.isInExtension();
-        console.log('isSupported MessengerExtensions.isInExtension: ', isSupported);
+    console.log('isSupported MessengerExtensions.isInExtension: ', isSupported);
+    console.log('window extAsyncInit: MessengerExtensions ', MessengerExtensions)    
 
     MessengerExtensions.getContext('449310003232049',
         function success(thread_context) {
