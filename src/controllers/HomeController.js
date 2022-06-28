@@ -292,7 +292,7 @@ let handlePostReserveTable = async (req, res) => {
             `
         };
 
-        await chatbotService.sendMessage(req.body.psid, response);
+        await chatbotService.callSendAPI(req.body.psid, response);
 
         return res.status(200).json({
             message: "ok"
