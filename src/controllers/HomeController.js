@@ -15,7 +15,7 @@ let getHomePage = (req, res) => {
 }
 
 let getGoogleSheet = async (req, res) => {
-    try {
+
 
         let currentDate = new Date();
 
@@ -48,10 +48,7 @@ let getGoogleSheet = async (req, res) => {
 
 
         return res.send('Writing data to Google Sheet succeeds!')
-    }
-    catch (e) {
-        return res.send('Oops! Something wrongs, check logs console for detail ... ')
-    }
+
 }
 
 let postWebhook = (req, res) => {
