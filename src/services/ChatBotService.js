@@ -129,7 +129,7 @@ let handleGetStarted = (sender_psid) => {
         try {
             let username = await getUserName(sender_psid)
             let first_response = { "text": `Chào mừng bạn ${username} đến với nhà hàng của chúng tôi.` }
-            let second_response = getStartedTemplate()
+            let second_response = getStartedTemplate(sender_psid)
 
             // send text message
             await callSendAPI(sender_psid, first_response)
@@ -144,7 +144,7 @@ let handleGetStarted = (sender_psid) => {
     })
 }
 
-let getStartedTemplate = () => {
+let getStartedTemplate = (senderID) => {
     let response = {
         "attachment": {
             "type": "template",
@@ -162,7 +162,7 @@ let getStartedTemplate = () => {
                         },
                         {
                             "type": "web_url",
-                            "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                            "url": `${process.env.URL_WEB_VIEW_ORDER}?senderID=${senderID}`,
                             "title": "ĐẶT BÀN",
                             "webview_height_ratio": "tall",
                             "messenger_extensions": true //false: open the webview in new tab
@@ -185,7 +185,7 @@ let getStartedTemplate = () => {
 let handleSendMainMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let first_response = getMainMenuTemplate()
+            let first_response = getMainMenuTemplate(sender_psid)
             await callSendAPI(sender_psid, first_response)
 
             resolve("done")
@@ -195,7 +195,7 @@ let handleSendMainMenu = (sender_psid) => {
     })
 }
 
-let getMainMenuTemplate = () => {
+let getMainMenuTemplate = (senderID) => {
 
     let response = {
         "attachment": {
@@ -227,7 +227,7 @@ let getMainMenuTemplate = () => {
                         "buttons": [
                             {
                                 "type": "web_url",
-                                "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                                "url": `${process.env.URL_WEB_VIEW_ORDER}?senderID=${senderID}`,
                                 "title": "ĐẶT BÀN",
                                 "webview_height_ratio": "tall",
                                 "messenger_extensions": true //false: open the webview in new tab
@@ -599,7 +599,7 @@ let handleShowDetailRooms = (sender_psid) => {
             // send an image
             let first_response = getImageRoomsTemplates()
             // send a button template: text, buttons
-            let second_response = getButtonRoomsTemplate()
+            let second_response = getButtonRoomsTemplate(sender_psid)
             await callSendAPI(sender_psid, first_response)
             await callSendAPI(sender_psid, second_response)
             resolve("done")
@@ -623,7 +623,7 @@ let getImageRoomsTemplates = () => {
     return response
 }
 
-let getButtonRoomsTemplate = () => {
+let getButtonRoomsTemplate = (senderID) => {
 
     let response = {
         "attachment":{
@@ -639,7 +639,7 @@ let getButtonRoomsTemplate = () => {
                     },
                     {
                         "type": "web_url",
-                        "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                        "url": `${process.env.URL_WEB_VIEW_ORDER}?senderID=${senderID}`,
                         "title": "ĐẶT BÀN",
                         "webview_height_ratio": "tall",
                         "messenger_extensions": true //false: open the webview in new tab
