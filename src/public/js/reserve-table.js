@@ -1,5 +1,3 @@
-require("dotenv").config()
-const APP_ID = process.env.APP_ID
 
 (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
