@@ -270,8 +270,11 @@ let setupPersistentMenu = async (req, res) => {
 }
 
 let handleReserveTable = (req, res) => {
+    let sender_psid = req.params.sender_psid
     // because config viewEngine
-    return res.render('reserve-table.ejs')
+    return res.render('reserve-table.ejs', {
+        sender_psid: sender_psid
+    })
 }
 
 let handlePostReserveTable = async (req, res) => {
