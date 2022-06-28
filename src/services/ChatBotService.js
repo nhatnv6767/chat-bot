@@ -226,9 +226,9 @@ let getMainMenuTemplate = () => {
                         "image_url": IMAGE_MAIN_MENU_2,
                         "buttons": [
                             {
-                                "title": "ĐẶT BÀN",
                                 "type": "web_url",
                                 "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                                "title": "ĐẶT BÀN",
                                 "webview_height_ratio": "tall",
                                 "messenger_extensions": true //false: open the webview in new tab
                             }
@@ -638,9 +638,9 @@ let getButtonRoomsTemplate = () => {
                         "payload":"MAIN_MENU"
                     },
                     {
-                        "title": "ĐẶT BÀN",
                         "type": "web_url",
                         "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                        "title": "ĐẶT BÀN",
                         "webview_height_ratio": "tall",
                         "messenger_extensions": true //false: open the webview in new tab
                     }
