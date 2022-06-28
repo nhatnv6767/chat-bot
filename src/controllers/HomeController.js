@@ -1,12 +1,57 @@
 require("dotenv").config()
 import request from "request";
 import chatbotService from "../services/ChatBotService"
+import moment from "moment";
+const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
+const PRIVATE_KEY = '-----BEGIN PRIVATE KEY-----\\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCxFWEh4MlkqU4/\\nr+VHqr+QrgTtQ62cxK7IgFcFNTo0Tzbs7bsWaJuK5VMmjbhg3KJW3g2OuICXWOFo\\nYAwKZ9zx7JKOk0clsO1UenBrwfgg9gC6qTadbIy4O8hyKA+KFDdxr8jNu7ZKk07c\\nI7tXmXTTfQrPYWs1aVsAqIvTF5d2pYE731YujA8nefwz/0YRFr3NtZ5cVgOQ7IJe\\nvSgre43yuPBEbUlBFH4SRUVmGAD4W9php/orS3lSceqHLx0wmk41+WXFThFTKXN2\\ncv1ItCtPlhT2l42uZFycGNYSfnOpS59+WSW+fI6GgY6H92Jer8wW8rujWT8YLMEt\\n9BHGRwRvAgMBAAECggEAC2Obnqktarr03GW8slJKBc0bZgMfTGDd+OlAL4aP2sNp\\nfe2ARd2ue01qfqVIwXoPOtUHPDGjm5hMzwC2ZYjujeSwPFk+jy8E5JUHW/batYv8\\n2gR+DbvohQTbTHRFI5VPR5GNsaWsALnerYvixayJ9fwp0NKsKYBAKRet/oKa7Dd3\\nD/vgqkxoebY5JUfliwF3G3pyTTx0bUhbwq5T/+1sq7ftSN9aI4plDzKMiP2o9k1F\\n+NIPdtM1bN7rhFCZQrhfFCfeyR88f7GaO+GOuUbx6ToQqJhl6jKqxiw/9xzhzHs8\\nvpsKQvYlFuItjgzJetZzxj9qaj5Vhv2iSN2fSgdoGQKBgQD5czl5uRopUaZTYRHh\\nrubPC1jrEGgUoy/NSXft/3DX7Zeu1BYVpyXUjisfPF+s1bc0UHW1MtercvVHH9a8\\nFt/4NiAj9lMheASkbcQpwte2aighlaGaBDgctb7YVVv1HpE/1xwbibKu2F3If0rt\\nXuLSBQuurBmBl5OORRJyW58ttQKBgQC1u7cCh3qYwTHt+JSrFecqKXURk8tVpfX6\\ncMsbi7w0V1RVfmSAf7kOmse/Tha25L1KaWHeZTBP15H+XwR3+nixb1yxMqVSrUhI\\nWqCy6wF+a9aqZTVzO9eGe/EIKcy9vtY8zPfex75kQ5fvE8R54X9w8o0uwWRRIWqJ\\njIIjHMAgEwKBgQDi4A+IS/glWGOkNgcjcgXujW2D7dob2wfg+E8hoVAqs6dflPm5\\nG9rmZZ+Gu0xxT7de10cXVHSfNOEsnSKa01tEz0WQL7sQF65xNnxRVysGd6qkUQk3\\noVq/kfVPoOMQH4sPuz+PND/VkmhJsKyfE8vMJFapuVFBcnD71oqehAJUeQKBgFYi\\ncG08dTjtaJLX3O7x5KyxFZGNMTSZAmr/BuU5Z6yPL6ON0mitILLxXXcotc9dvvID\\n3KUh5LITBFlCA8Yx6v5+P7qkvILhKn9QpRXoGL8osYf1jE3fsRlGqUkrNqVATB5p\\nL5phpbWz69Ee12LFJDgOXigo9TkW0336ILwvpkgNAoGBANbbQSDTc1xt6jJhWPUu\\nrS2JkNadzN+hKeKjPCvvCiXKSq9X3v5+tP8Xutq2jeTuuUJqowEki0OJ251PM629\\nG70XfL76sqjmGKum8cvI6aKzYluPI9lRjOHDY1cgxBzZ6R1X4rcLwAfPxbH1xq1N\\nGkoObTboNLEtqyRbhyy6Zdo/\\n-----END PRIVATE KEY-----\\n'
+const CLIENT_EMAIL = 'bhnone-sheet@valued-listener-354715.iam.gserviceaccount.com'
+const SHEET_ID = '1dtVMEUSpochl0cB9xhkCjoTTO5HvnToxMr3_rOYsSHg';
 
 let getHomePage = (req, res) => {
     // because config viewEngine
     return res.render('homepage.ejs')
+}
+
+let getGoogleSheet = async (req, res) => {
+    try {
+
+        let currentDate = new Date();
+
+        const format = "HH:mm DD/MM/YYYY"
+
+        let formatedDate = moment(currentDate).format(format);
+
+        // Initialize the sheet - doc ID is the long id in the sheets URL
+        const doc = new GoogleSpreadsheet(SHEET_ID);
+
+        // Initialize Auth - see more available options at https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication
+        await doc.useServiceAccountAuth({
+            client_email: CLIENT_EMAIL,
+            private_key: PRIVATE_KEY,
+        });
+
+        await doc.loadInfo(); // loads document properties and worksheets
+
+        const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id] or doc.sheetsByTitle[title]
+
+        // append rows
+        await sheet.addRow(
+            {
+                "Tên Facebook": 'Nguyễn Trần Thanh Vil',
+                "Email": 'nhatnvnvnv@gmail.com',
+                "Số điện thoại": `'0321456789`,
+                "Thời gian": formatedDate,
+                "Tên khách hàng": "N.None"
+            });
+
+
+        return res.send('Writing data to Google Sheet succeeds!')
+    }
+    catch (e) {
+        return res.send('Oops! Something wrongs, check logs console for detail ... ')
+    }
 }
 
 let postWebhook = (req, res) => {
@@ -316,6 +361,7 @@ module.exports = {
     setupPersistentMenu: setupPersistentMenu,
     handleReserveTable: handleReserveTable,
     handlePostReserveTable: handlePostReserveTable,
+    getGoogleSheet: getGoogleSheet
 }
 
 // curl -X GET "localhost:8080/webhook?hub.verify_token=isJustRandomString&hub.challenge=CHALLENGE_ACCEPTED&hub.mode=subscribe"

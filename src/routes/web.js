@@ -16,6 +16,9 @@ let initWebRoutes = (app) => {
 
     router.get("/reserve-table/:sender_psid", homeController.handleReserveTable)
     router.post("/reserve-table-ajax", homeController.handlePostReserveTable)
+
+    // test write into excel
+    router.get("/excel", homeController.getGoogleSheet)
     return app.use("/", router)
 }
 
