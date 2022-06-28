@@ -299,7 +299,7 @@ let handlePostReserveTable = async (req, res) => {
         });
     } catch (e) {
         console.log("Error reserve table: ",e);
-        return res.status(200).json({
+        return res.status(500).json({
             message: "Server error"
         });
     }
