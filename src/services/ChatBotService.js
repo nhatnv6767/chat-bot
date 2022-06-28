@@ -161,10 +161,10 @@ let getStartedTemplate = () => {
                             "payload": "MAIN_MENU",
                         },
                         {
-                            "title": "ĐẶT BÀN",
                             "type": "web_url",
                             "url": `${process.env.URL_WEB_VIEW_ORDER}`,
-                            "webview_height_ratio": "full",
+                            "title": "ĐẶT BÀN",
+                            "webview_height_ratio": "tall",
                             "messenger_extensions": true //false: open the webview in new tab
                         },
                         {
