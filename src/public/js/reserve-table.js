@@ -10,7 +10,7 @@
 window.extAsyncInit = function() {
     // the Messenger Extensions JS SDK is done loading
 
-    MessengerExtensions.getContext("449310003232049",
+    MessengerExtensions.getContext("101038356003024",
         function success(thread_context){
             // success
             //set psid to input
