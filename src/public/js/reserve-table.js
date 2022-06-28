@@ -1,25 +1,24 @@
-
-(function(d, s, id){
+(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
+    if (d.getElementById(id)) { return; }
     js = d.createElement(s); js.id = id;
     js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'Messenger'));
 
-window.extAsyncInit = function() {
+window.extAsyncInit = function () {
     // the Messenger Extensions JS SDK is done loading
 
-    MessengerExtensions.getContext("449310003232049",
-        function success(thread_context){
+    MessengerExtensions.getContext('449310003232049',
+        function success(thread_context) {
             // success
             //set psid to input
             $("#psid").val(thread_context.psid);
             handleClickButtonReserveTable();
         },
-        function error(err){
+        function error(err) {
             // error
-            console.log("Lỗi đặt bàn: ",err);
+            console.log('Lỗi đặt bàn', err);
         }
     );
 };
@@ -27,6 +26,7 @@ window.extAsyncInit = function() {
 //validate inputs
 function validateInputFields() {
     const EMAIL_REG = /[a-zA-Z][a-zA-Z0-9_\.]{1,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}/g;
+
     let email = $("#email");
     let phoneNumber = $("#phoneNumber");
 
@@ -47,9 +47,11 @@ function validateInputFields() {
     return false;
 }
 
+
 function handleClickButtonReserveTable() {
-    $("#btnReserveTable").on("click", function(e) {
-        let check = validateInputFields();
+    $("#btnReserveTable").on("click", function (e) {
+        let check = validateInputFields(); //return true or false
+
         let data = {
             psid: $("#psid").val(),
             customerName: $("#customerName").val(),
@@ -57,7 +59,7 @@ function handleClickButtonReserveTable() {
             phoneNumber: $("#phoneNumber").val()
         };
 
-        if(!check) {
+        if (!check) {
             //close webview
             MessengerExtensions.requestCloseBrowser(function success() {
                 // webview closed
@@ -71,10 +73,10 @@ function handleClickButtonReserveTable() {
                 url: `${window.location.origin}/reserve-table-ajax`,
                 method: "POST",
                 data: data,
-                success: function(data) {
+                success: function (data) {
                     console.log(data);
                 },
-                error: function(error) {
+                error: function (error) {
                     console.log(error);
                 }
             })
