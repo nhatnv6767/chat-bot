@@ -278,24 +278,21 @@ let handlePostReserveTable = async (req, res) => {
     try {
         let customerName = "";
         if (req.body.customerName === "") {
-            customerName = "Empty";
+            customerName = "Để trống";
         } else customerName = req.body.customerName;
 
         // I demo response with sample text
         // you can check database for customer order's status
 
-        let response1 = {
-            "text": `---Info about your lookup order---
-            \nCustomer name: ${customerName}
-            \nEmail address: ${req.body.email}
-            \nOrder number: ${req.body.orderNumber}
+        let response = {
+            "text": `---Thông tin khách hàng đặt bàn---
+            \nHọ và tên: ${customerName}
+            \nĐịa chỉ email: ${req.body.email}
+            \nSố điện thoại: ${req.body.phoneNumber}
             `
         };
 
-        let response2 = templateMessage.setInfoOrderTemplate();
-
-        await chatbotService.sendMessage(req.body.psid, response1);
-        await chatbotService.sendMessage(req.body.psid, response2);
+        await chatbotService.sendMessage(req.body.psid, response);
 
         return res.status(200).json({
             message: "ok"
