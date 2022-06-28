@@ -22,6 +22,11 @@ window.extAsyncInit = function() {
         function error(err) {
             // error
             console.log('Lỗi đặt bàn', err);
+
+            // run fallback, get userID from URL
+            $("#psid").val(sender_psid);
+            handleClickButtonReserveTable();
+
         }
     );
 };
