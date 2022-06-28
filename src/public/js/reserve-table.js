@@ -9,7 +9,7 @@
 window.extAsyncInit = function () {
     // the Messenger Extensions JS SDK is done loading
     let isSupported = MessengerExtensions.isInExtension();
-        console.log('isSupported', isSupported);
+        console.log('isSupported MessengerExtensions.isInExtension: ', isSupported);
 
     MessengerExtensions.getContext('449310003232049',
         function success(thread_context) {
@@ -19,10 +19,10 @@ window.extAsyncInit = function () {
             $("#psid").val(thread_context.psid);
             handleClickButtonReserveTable();
         },
-        // function error(err) {
-        //     // error
-        //     console.log('Lỗi đặt bàn', err);
-        // }
+        function error(err) {
+            // error
+            console.log('Lỗi đặt bàn', err);
+        }
     );
 };
 
