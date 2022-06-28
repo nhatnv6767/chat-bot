@@ -49,7 +49,7 @@ function validateInputFields() {
     return false;
 }
 
-handleClickButtonReserveTable = () => {
+function handleClickButtonReserveTable() {
     $("#btnReserveTable").on("click", function(e) {
         let check = validateInputFields();
         let data = {
