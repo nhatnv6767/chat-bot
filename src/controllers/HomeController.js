@@ -365,7 +365,6 @@ module.exports = {
     setupPersistentMenu: setupPersistentMenu,
     handleReserveTable: handleReserveTable,
     handlePostReserveTable: handlePostReserveTable,
-    getGoogleSheet: getGoogleSheet
 }
 
 // curl -X GET "localhost:8080/webhook?hub.verify_token=isJustRandomString&hub.challenge=CHALLENGE_ACCEPTED&hub.mode=subscribe"
