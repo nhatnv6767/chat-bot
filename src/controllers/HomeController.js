@@ -6,10 +6,6 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
-const PRIVATE_KEY = ''
-const CLIENT_EMAIL = ''
-const SHEET_ID = '';
-
 const SPEADSHEET_ID = process.env.SPEADSHEET_ID
 const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL
 const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY
@@ -20,6 +16,10 @@ let getHomePage = (req, res) => {
 }
 
 let writeDataToGoogleSheet = async (data) => {
+        let currentDate = new Date();
+        const format = "HH:mm DD/MM/YYYY"
+        let formatedDate = moment(currentDate).format(format);
+
     // Initialize the sheet - doc ID is the long id in the sheets URL
     const doc = new GoogleSpreadsheet(SPEADSHEET_ID);
 
@@ -35,6 +35,15 @@ let writeDataToGoogleSheet = async (data) => {
 
     const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id] or doc.sheetsByTitle[title]
 
+        // append rows
+        await sheet.addRow(
+            {
+                "Tên Facebook": data.username,
+                "Địa chỉ Email": data.email,
+                "Số điện thoại": data.phoneNumber,
+                "Thời gian": formatedDate,
+                "Tên khách hàng": data.customerName
+            });
 }
 
 let getGoogleSheet = async (req, res) => {
