@@ -356,9 +356,20 @@ let handleReserveTable = (req, res) => {
 
 let handlePostReserveTable = async (req, res) => {
     try {
+        let username = await chatbotService.getUserName(req.body.psid);
+
+        // write data to google sheet
+        let data = {
+            username: username,
+            email: req.body.email,
+            phoneNumber: req.body.phoneNumber,
+            customerName: req.body.customerName
+        }
+        await writeDataToGoogleSheet(data);
+
         let customerName = "";
         if (req.body.customerName === "") {
-            customerName = await chatbotService.getUserName(req.body.psid);
+            customerName = username;
         } else customerName = req.body.customerName;
 
         // I demo response with sample text
