@@ -41,7 +41,8 @@ let writeDataToGoogleSheet = async (data) => {
             {
                 "Tên Facebook": data.username,
                 "Địa chỉ Email": data.email,
-                "Số điện thoại": data.phoneNumber,
+                // để excel hiểu là string, hiển thị số 0
+                "Số điện thoại": `'` + data.phoneNumber,
                 "Thời gian": formatedDate,
                 "Tên khách hàng": data.customerName
             });
