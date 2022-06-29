@@ -70,15 +70,26 @@ function handleClickButtonReserveTable() {
         if (!check) {
             //close webview
             MessengerExtensions.requestCloseBrowser(function success() {
-                callAjax()
+                // callAjax()
                 // webview closed
             }, function error(err) {
-                window.close()
+                // window.close()
                 // an error occurred
                 console.log(err);
-                callAjax()
+                // callAjax()
             });
-
+            //send data to node.js server
+            $.ajax({
+                url: `${window.location.origin}/reserve-table-ajax`,
+                method: "POST",
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
 
         }
     });
