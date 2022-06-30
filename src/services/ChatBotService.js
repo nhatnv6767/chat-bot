@@ -738,7 +738,18 @@ let handleGuideToUseBot = (sender_psid) => {
 
 let getBotMediaTemplate = (sender_psid) => {
     let response = {
-
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "media",
+                "elements": [
+                    {
+                        "media_type": "<image|video>",
+                        "url": "<FACEBOOK_URL>"
+                    }
+                ]
+            }
+        }
     }
 
     return response
