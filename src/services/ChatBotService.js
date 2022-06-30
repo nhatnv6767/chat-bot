@@ -29,6 +29,8 @@ const IMAGE_DETAIL_MEAT_3 = "https://bit.ly/3OrvBI2"
 
 const IMAGE_DETAIL_ROOMS = "https://bit.ly/3nlgCUc"
 
+const IMAGE_GIF_WELCOME = "https://bit.ly/3nzlUex"
+
 let callSendAPI = async (sender_psid, response) => {
     // Construct the message body
     let request_body = {
@@ -129,13 +131,19 @@ let handleGetStarted = (sender_psid) => {
         try {
             let username = await getUserName(sender_psid)
             let first_response = { "text": `Chào mừng bạn ${username} đến với nhà hàng của chúng tôi.` }
-            let second_response = getStartedTemplate(sender_psid)
+            // let second_response = getStartedTemplate(sender_psid)
+
+            // send an image
+            let second_response = getImageGetStartedTemplate()
+            let third_response = getStartedQuickReplyTemplate(sender_psid)
 
             // send text message
             await callSendAPI(sender_psid, first_response)
 
             // send generic template message
             await callSendAPI(sender_psid, second_response)
+
+            await callSendAPI(sender_psid, third_response)
 
             resolve("done")
         } catch (e) {
@@ -178,6 +186,28 @@ let getStartedTemplate = (sender_psid) => {
         }
     }
 
+
+    return response
+}
+
+let getImageGetStartedTemplate = () => {
+    let response = {
+        "attachment":{
+            "type":"image",
+            "payload":{
+                "url": IMAGE_GIF_WELCOME,
+                "is_reusable":true
+            }
+        }
+    }
+
+    return response
+}
+
+let getStartedQuickReplyTemplate = (sender_psid) => {
+    let response = {
+
+    }
 
     return response
 }
