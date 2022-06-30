@@ -3,9 +3,9 @@ import request from "request";
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 const IMAGE_GET_STARTED = "https://bit.ly/3xTWihv"
-const IMAGE_MAIN_MENU_1 = "https://bit.ly/3HTBICf"
-const IMAGE_MAIN_MENU_2 = "https://bit.ly/3u3dKz3"
-const IMAGE_MAIN_MENU_3 = "https://bit.ly/3QJAqOx"
+const IMAGE_MAIN_MENU_1 = "https://bit.ly/3Agy7N8"
+const IMAGE_MAIN_MENU_2 = "https://bit.ly/3a6VFJw"
+const IMAGE_MAIN_MENU_3 = "https://bit.ly/3a6VU7o"
 
 const IMAGE_VIEW_APPETIZERS = "https://bit.ly/3OOOSD7"
 const IMAGE_VIEW_FISH = "https://bit.ly/3HPYvz3"
@@ -66,51 +66,66 @@ let callSendAPI =  (sender_psid, response) => {
 }
 
 let sendTypingOn = (sender_psid) => {
-    // Construct the message body
-    let request_body = {
-        "recipient": {
-            "id": sender_psid
-        },
-        "sender_action":"typing_on"
-    }
-    // Send the HTTP request to the Messenger Platform
-    request({
-        // 101038356003024
-        "uri": "https://graph.facebook.com/v14.0/me/messages",
-        "qs": { "access_token": PAGE_ACCESS_TOKEN },
-        "method": "POST",
-        "json": request_body
-    }, (err, res, body) => {
-        if (!err) {
-            console.log('sendTypingOn!')
-        } else {
-            console.error("Unable to sendTypingOn:" + err);
+    return new Promise((resolve, reject) => {
+        try {
+            // Construct the message body
+            let request_body = {
+                "recipient": {
+                    "id": sender_psid
+                },
+                "sender_action":"typing_on"
+            }
+            // Send the HTTP request to the Messenger Platform
+            request({
+                // 101038356003024
+                "uri": "https://graph.facebook.com/v14.0/me/messages",
+                "qs": { "access_token": PAGE_ACCESS_TOKEN },
+                "method": "POST",
+                "json": request_body
+            }, (err, res, body) => {
+                if (!err) {
+                    resolve('sendTypingOn!')
+                } else {
+                    console.error("Unable to sendTypingOn:" + err);
+                }
+            });
+        } catch (e) {
+            reject(e);
         }
-    });
+
+    })
+
 }
 
 let sendMarkReadMessage = (sender_psid) => {
-    // Construct the message body
-    let request_body = {
-        "recipient": {
-            "id": sender_psid
-        },
-        "sender_action":"mark_seen"
-    }
-    // Send the HTTP request to the Messenger Platform
-    request({
-        // 101038356003024
-        "uri": "https://graph.facebook.com/v14.0/me/messages",
-        "qs": { "access_token": PAGE_ACCESS_TOKEN },
-        "method": "POST",
-        "json": request_body
-    }, (err, res, body) => {
-        if (!err) {
-            console.log('sendMarkReadMessage!')
-        } else {
-            console.error("Unable to sendMarkReadMessage:" + err);
+    return new Promise((resolve, reject) => {
+        try {
+            // Construct the message body
+            let request_body = {
+                "recipient": {
+                    "id": sender_psid
+                },
+                "sender_action":"mark_seen"
+            }
+            // Send the HTTP request to the Messenger Platform
+            request({
+                // 101038356003024
+                "uri": "https://graph.facebook.com/v14.0/me/messages",
+                "qs": { "access_token": PAGE_ACCESS_TOKEN },
+                "method": "POST",
+                "json": request_body
+            }, (err, res, body) => {
+                if (!err) {
+                    resolve('sendMarkReadMessage!')
+                } else {
+                    console.error("Unable to sendMarkReadMessage:" + err);
+                }
+            });
+        }catch (e) {
+            reject(e);
         }
-    });
+
+    })
 }
 
 let getUserName =  (sender_psid) => {
@@ -221,13 +236,10 @@ let getStartedQuickReplyTemplate = (sender_psid) => {
                 "content_type":"text",
                 "title": "MENU CHÍNH",
                 "payload":"MAIN_MENU",
-            },{
+            },
+            {
                 "content_type":"text",
-                "title": "ĐẶT BÀN",
-                "payload":"<POSTBACK_PAYLOAD>",
-            },{
-                "content_type":"text",
-                "title": "HƯỚNG DẪN SỬ DỤNG BOT",
+                "title": "HD SỬ DỤNG BOT",
                 "payload":"GUIDE_TO_USE",
             }
         ]
@@ -707,6 +719,56 @@ let getButtonRoomsTemplate = (sender_psid) => {
     return response
 }
 
+let handleGuideToUseBot = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let username = await getUserName(sender_psid)
+            let first_response = { "text": `Chào mừng bạn ${username}, mình là chatbot của nhà hàng.
+            \nBạn xem video dưới đây để biết cách sử dụng chatbot nhé.  😚 
+            ` }
+            let second_response = getBotMediaTemplate(sender_psid)
+            await callSendAPI(sender_psid, first_response)
+            await callSendAPI(sender_psid, second_response)
+            resolve("done")
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let getBotMediaTemplate = (sender_psid) => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "media",
+                "elements": [
+                    {
+                        "media_type": "video",
+                        "attachment_id": "1465534453898716",
+
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "MENU CHÍNH",
+                                "payload": "MAIN_MENU"
+                            },
+                            {
+                                "type": "web_url",
+                                "title": "Channel Youtube",
+                                "url": "https://www.youtube.com/user/ANNnewsCH",
+                                "webview_height_ratio": "full"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+
+    return response
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
     handleSendMainMenu: handleSendMainMenu,
@@ -719,4 +781,5 @@ module.exports = {
     handleShowDetailRooms: handleShowDetailRooms,
     callSendAPI: callSendAPI,
     getUserName: getUserName,
+    handleGuideToUseBot: handleGuideToUseBot,
 }
