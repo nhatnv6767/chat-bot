@@ -3,9 +3,9 @@ import request from "request";
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 const IMAGE_GET_STARTED = "https://bit.ly/3xTWihv"
-const IMAGE_MAIN_MENU_1 = "https://bit.ly/3HTBICf"
-const IMAGE_MAIN_MENU_2 = "https://bit.ly/3u3dKz3"
-const IMAGE_MAIN_MENU_3 = "https://bit.ly/3QJAqOx"
+const IMAGE_MAIN_MENU_1 = "https://bit.ly/3Agy7N8"
+const IMAGE_MAIN_MENU_2 = "https://bit.ly/3a6VFJw"
+const IMAGE_MAIN_MENU_3 = "https://bit.ly/3a6VU7o"
 
 const IMAGE_VIEW_APPETIZERS = "https://bit.ly/3OOOSD7"
 const IMAGE_VIEW_FISH = "https://bit.ly/3HPYvz3"
@@ -78,7 +78,7 @@ let sendTypingOn = (sender_psid) => {
             // Send the HTTP request to the Messenger Platform
             request({
                 // 101038356003024
-                "uri": "https://graph.facebook.com/v14.0/101038356003024/messages",
+                "uri": "https://graph.facebook.com/v14.0/me/messages",
                 "qs": { "access_token": PAGE_ACCESS_TOKEN },
                 "method": "POST",
                 "json": request_body
