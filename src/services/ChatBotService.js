@@ -746,7 +746,7 @@ let getBotMediaTemplate = (sender_psid) => {
                 "elements": [
                     {
                         "media_type": "video",
-                        "url": "https://business.facebook.com/nhahangnone66/videos/1465534453898716",
+                        "url": "https://business.facebook.com/nhahangnone66/videos/579079407078360",
 
                         "buttons": [
                             {
