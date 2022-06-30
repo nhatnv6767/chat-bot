@@ -719,6 +719,10 @@ let getButtonRoomsTemplate = (sender_psid) => {
     return response
 }
 
+let handleGuideToUseBot = (sender_psid) => {
+    
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
     handleSendMainMenu: handleSendMainMenu,
@@ -731,4 +735,5 @@ module.exports = {
     handleShowDetailRooms: handleShowDetailRooms,
     callSendAPI: callSendAPI,
     getUserName: getUserName,
+    handleGuideToUseBot: handleGuideToUseBot,
 }
