@@ -78,7 +78,7 @@ let sendTypingOn = (sender_psid) => {
             // Send the HTTP request to the Messenger Platform
             request({
                 // 101038356003024
-                "uri": "https://graph.facebook.com/v14.0/me/messages",
+                "uri": "https://graph.facebook.com/v14.0/101038356003024/messages",
                 "qs": { "access_token": PAGE_ACCESS_TOKEN },
                 "method": "POST",
                 "json": request_body
@@ -239,7 +239,7 @@ let getStartedQuickReplyTemplate = (sender_psid) => {
             },
             {
                 "content_type":"text",
-                "title": "HƯỚNG DẪN SỬ DỤNG BOT",
+                "title": "HD SỬ DỤNG BOT",
                 "payload":"GUIDE_TO_USE",
             }
         ]
