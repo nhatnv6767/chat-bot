@@ -213,17 +213,14 @@ let getStartedQuickReplyTemplate = (sender_psid) => {
                 "content_type":"text",
                 "title": "MENU CHÍNH",
                 "payload":"MAIN_MENU",
-                "image_url":"http://example.com/img/red.png"
             },{
                 "content_type":"text",
                 "title": "ĐẶT BÀN",
                 "payload":"<POSTBACK_PAYLOAD>",
-                "image_url":"http://example.com/img/green.png"
             },{
                 "content_type":"text",
                 "title": "HƯỚNG DẪN SỬ DỤNG BOT",
-                "payload":"<POSTBACK_PAYLOAD>",
-                "image_url":"http://example.com/img/green.png"
+                "payload":"GUIDE_TO_USE",
             }
         ]
     }
