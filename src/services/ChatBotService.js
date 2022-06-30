@@ -51,6 +51,7 @@ let callSendAPI =  (sender_psid, response) => {
                 "method": "POST",
                 "json": request_body
             }, (err, res, body) => {
+                console.log(body)
                 if (!err) {
                     resolve('message sent!')
                 } else {
@@ -746,7 +747,7 @@ let getBotMediaTemplate = (sender_psid) => {
                     {
                         "media_type": "video",
                         "url": "https://business.facebook.com/nhahangnone66/videos/1465534453898716",
-                        
+
                         "buttons": [
                             {
                                 "type": "postback",
