@@ -66,51 +66,66 @@ let callSendAPI =  (sender_psid, response) => {
 }
 
 let sendTypingOn = (sender_psid) => {
-    // Construct the message body
-    let request_body = {
-        "recipient": {
-            "id": sender_psid
-        },
-        "sender_action":"typing_on"
-    }
-    // Send the HTTP request to the Messenger Platform
-    request({
-        // 101038356003024
-        "uri": "https://graph.facebook.com/v14.0/me/messages",
-        "qs": { "access_token": PAGE_ACCESS_TOKEN },
-        "method": "POST",
-        "json": request_body
-    }, (err, res, body) => {
-        if (!err) {
-            console.log('sendTypingOn!')
-        } else {
-            console.error("Unable to sendTypingOn:" + err);
+    return new Promise((resolve, reject) => {
+        try {
+            // Construct the message body
+            let request_body = {
+                "recipient": {
+                    "id": sender_psid
+                },
+                "sender_action":"typing_on"
+            }
+            // Send the HTTP request to the Messenger Platform
+            request({
+                // 101038356003024
+                "uri": "https://graph.facebook.com/v14.0/me/messages",
+                "qs": { "access_token": PAGE_ACCESS_TOKEN },
+                "method": "POST",
+                "json": request_body
+            }, (err, res, body) => {
+                if (!err) {
+                    resolve('sendTypingOn!')
+                } else {
+                    console.error("Unable to sendTypingOn:" + err);
+                }
+            });
+        } catch (e) {
+            reject(e);
         }
-    });
+
+    })
+
 }
 
 let sendMarkReadMessage = (sender_psid) => {
-    // Construct the message body
-    let request_body = {
-        "recipient": {
-            "id": sender_psid
-        },
-        "sender_action":"mark_seen"
-    }
-    // Send the HTTP request to the Messenger Platform
-    request({
-        // 101038356003024
-        "uri": "https://graph.facebook.com/v14.0/me/messages",
-        "qs": { "access_token": PAGE_ACCESS_TOKEN },
-        "method": "POST",
-        "json": request_body
-    }, (err, res, body) => {
-        if (!err) {
-            console.log('sendMarkReadMessage!')
-        } else {
-            console.error("Unable to sendMarkReadMessage:" + err);
+    return new Promise((resolve, reject) => {
+        try {
+            // Construct the message body
+            let request_body = {
+                "recipient": {
+                    "id": sender_psid
+                },
+                "sender_action":"mark_seen"
+            }
+            // Send the HTTP request to the Messenger Platform
+            request({
+                // 101038356003024
+                "uri": "https://graph.facebook.com/v14.0/me/messages",
+                "qs": { "access_token": PAGE_ACCESS_TOKEN },
+                "method": "POST",
+                "json": request_body
+            }, (err, res, body) => {
+                if (!err) {
+                    resolve('sendMarkReadMessage!')
+                } else {
+                    console.error("Unable to sendMarkReadMessage:" + err);
+                }
+            });
+        }catch (e) {
+            reject(e);
         }
-    });
+
+    })
 }
 
 let getUserName =  (sender_psid) => {
