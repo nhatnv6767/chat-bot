@@ -140,9 +140,10 @@ let handleGetStarted = (sender_psid) => {
             // send text message
             await callSendAPI(sender_psid, first_response)
 
-            // send generic template message
+            // send an image
             await callSendAPI(sender_psid, second_response)
 
+            // send a quick reply
             await callSendAPI(sender_psid, third_response)
 
             resolve("done")
@@ -206,7 +207,25 @@ let getImageGetStartedTemplate = () => {
 
 let getStartedQuickReplyTemplate = (sender_psid) => {
     let response = {
-
+        "text": "Dưới đây là các lựa chọn của nhà hàng:",
+        "quick_replies":[
+            {
+                "content_type":"text",
+                "title": "MENU CHÍNH",
+                "payload":"MAIN_MENU",
+                "image_url":"http://example.com/img/red.png"
+            },{
+                "content_type":"text",
+                "title": "ĐẶT BÀN",
+                "payload":"<POSTBACK_PAYLOAD>",
+                "image_url":"http://example.com/img/green.png"
+            },{
+                "content_type":"text",
+                "title": "HƯỚNG DẪN SỬ DỤNG BOT",
+                "payload":"<POSTBACK_PAYLOAD>",
+                "image_url":"http://example.com/img/green.png"
+            }
+        ]
     }
 
     return response
