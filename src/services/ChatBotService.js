@@ -744,8 +744,8 @@ let getBotMediaTemplate = (sender_psid) => {
                 "template_type": "media",
                 "elements": [
                     {
-                        "media_type": "<image|video>",
-                        "url": "<FACEBOOK_URL>"
+                        "media_type": "video",
+                        "attachment_id": "1465534453898716"
                     }
                 ]
             }
