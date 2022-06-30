@@ -720,7 +720,28 @@ let getButtonRoomsTemplate = (sender_psid) => {
 }
 
 let handleGuideToUseBot = (sender_psid) => {
-    
+    return new Promise(async (resolve, reject) => {
+        try {
+            let username = await getUserName(sender_psid)
+            let first_response = { "text": `Chào mừng bạn ${username}, mình là chatbot của nhà hàng.
+            \nBạn xem video dưới đây để biết cách sử dụng chatbot nhé.  😚 
+            ` }
+            let second_response = getBotMediaTemplate(sender_psid)
+            await callSendAPI(sender_psid, first_response)
+            await callSendAPI(sender_psid, second_response)
+            resolve("done")
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let getBotMediaTemplate = (sender_psid) => {
+    let response = {
+
+    }
+
+    return response
 }
 
 module.exports = {
