@@ -745,7 +745,21 @@ let getBotMediaTemplate = (sender_psid) => {
                 "elements": [
                     {
                         "media_type": "video",
-                        "attachment_id": "1465534453898716"
+                        "attachment_id": "1465534453898716",
+
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "MENU CHÍNH",
+                                "payload": "MAIN_MENU"
+                            },
+                            {
+                                "type": "web_url",
+                                "title": "Channel Youtube",
+                                "url": "https://www.youtube.com/user/ANNnewsCH",
+                                "webview_height_ratio": "full"
+                            }
+                        ]
                     }
                 ]
             }
