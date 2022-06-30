@@ -236,13 +236,10 @@ let getStartedQuickReplyTemplate = (sender_psid) => {
                 "content_type":"text",
                 "title": "MENU CHÍNH",
                 "payload":"MAIN_MENU",
-            },{
+            },
+            {
                 "content_type":"text",
-                "title": "ĐẶT BÀN",
-                "payload":"<POSTBACK_PAYLOAD>",
-            },{
-                "content_type":"text",
-                "title": "HD SỬ DỤNG BOT",
+                "title": "HƯỚNG DẪN SỬ DỤNG BOT",
                 "payload":"GUIDE_TO_USE",
             }
         ]
