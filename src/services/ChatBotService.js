@@ -745,8 +745,8 @@ let getBotMediaTemplate = (sender_psid) => {
                 "elements": [
                     {
                         "media_type": "video",
-                        "attachment_id": "1465534453898716",
-
+                        "url": "https://business.facebook.com/nhahangnone66/videos/1465534453898716",
+                        
                         "buttons": [
                             {
                                 "type": "postback",
