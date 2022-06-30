@@ -29,30 +29,40 @@ const IMAGE_DETAIL_MEAT_3 = "https://bit.ly/3OrvBI2"
 
 const IMAGE_DETAIL_ROOMS = "https://bit.ly/3nlgCUc"
 
-let callSendAPI = async (sender_psid, response) => {
-    // Construct the message body
-    let request_body = {
-        "recipient": {
-            "id": sender_psid
-        },
-        "message": response
-    }
+const IMAGE_GIF_WELCOME = "https://bit.ly/3nzlUex"
 
-    await sendMarkReadMessage(sender_psid)
-    await sendTypingOn(sender_psid)
-    // Send the HTTP request to the Messenger Platform
-    request({
-        "uri": "https://graph.facebook.com/v14.0/me/messages",
-        "qs": { "access_token": PAGE_ACCESS_TOKEN },
-        "method": "POST",
-        "json": request_body
-    }, (err, res, body) => {
-        if (!err) {
-            console.log('message sent!')
-        } else {
-            console.error("Unable to send message:" + err);
+let callSendAPI =  (sender_psid, response) => {
+    return new Promise(async(resolve, reject) => {
+        try {
+            // Construct the message body
+            let request_body = {
+                "recipient": {
+                    "id": sender_psid
+                },
+                "message": response
+            }
+
+            await sendMarkReadMessage(sender_psid)
+            await sendTypingOn(sender_psid)
+            // Send the HTTP request to the Messenger Platform
+            request({
+                "uri": "https://graph.facebook.com/v14.0/me/messages",
+                "qs": { "access_token": PAGE_ACCESS_TOKEN },
+                "method": "POST",
+                "json": request_body
+            }, (err, res, body) => {
+                if (!err) {
+                    resolve('message sent!')
+                } else {
+                    console.error("Unable to send message:" + err);
+                }
+            });
+
+        }catch (e) {
+            reject(e);
         }
-    });
+    })
+
 }
 
 let sendTypingOn = (sender_psid) => {
@@ -129,13 +139,20 @@ let handleGetStarted = (sender_psid) => {
         try {
             let username = await getUserName(sender_psid)
             let first_response = { "text": `Chào mừng bạn ${username} đến với nhà hàng của chúng tôi.` }
-            let second_response = getStartedTemplate()
+            // let second_response = getStartedTemplate(sender_psid)
+
+            // send an image
+            let second_response = getImageGetStartedTemplate()
+            let third_response = getStartedQuickReplyTemplate(sender_psid)
 
             // send text message
             await callSendAPI(sender_psid, first_response)
 
-            // send generic template message
+            // send an image
             await callSendAPI(sender_psid, second_response)
+
+            // send a quick reply
+            await callSendAPI(sender_psid, third_response)
 
             resolve("done")
         } catch (e) {
@@ -144,7 +161,7 @@ let handleGetStarted = (sender_psid) => {
     })
 }
 
-let getStartedTemplate = () => {
+let getStartedTemplate = (sender_psid) => {
     let response = {
         "attachment": {
             "type": "template",
@@ -161,9 +178,9 @@ let getStartedTemplate = () => {
                             "payload": "MAIN_MENU",
                         },
                         {
-                            "title": "ĐẶT BÀN",
                             "type": "web_url",
-                            "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                            "url": `${process.env.URL_WEB_VIEW_ORDER}/${sender_psid}`,
+                            "title": "ĐẶT BÀN",
                             "webview_height_ratio": "tall",
                             "messenger_extensions": true //false: open the webview in new tab
                         },
@@ -182,10 +199,47 @@ let getStartedTemplate = () => {
     return response
 }
 
+let getImageGetStartedTemplate = () => {
+    let response = {
+        "attachment":{
+            "type":"image",
+            "payload":{
+                "url": IMAGE_GIF_WELCOME,
+                "is_reusable":true
+            }
+        }
+    }
+
+    return response
+}
+
+let getStartedQuickReplyTemplate = (sender_psid) => {
+    let response = {
+        "text": "Dưới đây là các lựa chọn của nhà hàng:",
+        "quick_replies":[
+            {
+                "content_type":"text",
+                "title": "MENU CHÍNH",
+                "payload":"MAIN_MENU",
+            },{
+                "content_type":"text",
+                "title": "ĐẶT BÀN",
+                "payload":"<POSTBACK_PAYLOAD>",
+            },{
+                "content_type":"text",
+                "title": "HƯỚNG DẪN SỬ DỤNG BOT",
+                "payload":"GUIDE_TO_USE",
+            }
+        ]
+    }
+
+    return response
+}
+
 let handleSendMainMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let first_response = getMainMenuTemplate()
+            let first_response = getMainMenuTemplate(sender_psid)
             await callSendAPI(sender_psid, first_response)
 
             resolve("done")
@@ -195,7 +249,7 @@ let handleSendMainMenu = (sender_psid) => {
     })
 }
 
-let getMainMenuTemplate = () => {
+let getMainMenuTemplate = (sender_psid) => {
 
     let response = {
         "attachment": {
@@ -226,9 +280,9 @@ let getMainMenuTemplate = () => {
                         "image_url": IMAGE_MAIN_MENU_2,
                         "buttons": [
                             {
-                                "title": "ĐẶT BÀN",
                                 "type": "web_url",
-                                "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                                "url": `${process.env.URL_WEB_VIEW_ORDER}/${sender_psid}`,
+                                "title": "ĐẶT BÀN",
                                 "webview_height_ratio": "tall",
                                 "messenger_extensions": true //false: open the webview in new tab
                             }
@@ -599,7 +653,7 @@ let handleShowDetailRooms = (sender_psid) => {
             // send an image
             let first_response = getImageRoomsTemplates()
             // send a button template: text, buttons
-            let second_response = getButtonRoomsTemplate()
+            let second_response = getButtonRoomsTemplate(sender_psid)
             await callSendAPI(sender_psid, first_response)
             await callSendAPI(sender_psid, second_response)
             resolve("done")
@@ -623,7 +677,7 @@ let getImageRoomsTemplates = () => {
     return response
 }
 
-let getButtonRoomsTemplate = () => {
+let getButtonRoomsTemplate = (sender_psid) => {
 
     let response = {
         "attachment":{
@@ -638,9 +692,9 @@ let getButtonRoomsTemplate = () => {
                         "payload":"MAIN_MENU"
                     },
                     {
-                        "title": "ĐẶT BÀN",
                         "type": "web_url",
-                        "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                        "url": `${process.env.URL_WEB_VIEW_ORDER}/${sender_psid}`,
+                        "title": "ĐẶT BÀN",
                         "webview_height_ratio": "tall",
                         "messenger_extensions": true //false: open the webview in new tab
                     }
@@ -663,4 +717,6 @@ module.exports = {
     handleDetailViewFish: handleDetailViewFish,
     handleDetailViewMeat: handleDetailViewMeat,
     handleShowDetailRooms: handleShowDetailRooms,
+    callSendAPI: callSendAPI,
+    getUserName: getUserName,
 }
