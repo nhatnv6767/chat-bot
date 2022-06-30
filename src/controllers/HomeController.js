@@ -42,7 +42,7 @@ let writeDataToGoogleSheet = async (data) => {
                 "Tên Facebook": data.username,
                 "Địa chỉ Email": data.email,
                 // để excel hiểu là string, hiển thị số 0
-                "Số điện thoại": `'` + data.phoneNumber,
+                "Số điện thoại": data.phoneNumber,
                 "Thời gian": formatedDate,
                 "Tên khách hàng": data.customerName
             });
@@ -324,7 +324,7 @@ let handlePostReserveTable = async (req, res) => {
         let data = {
             username: username,
             email: req.body.email,
-            phoneNumber: req.body.phoneNumber,
+            phoneNumber: `'${req.body.phoneNumber}`  ,
             customerName: req.body.customerName
         }
         await writeDataToGoogleSheet(data);
