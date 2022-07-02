@@ -336,6 +336,9 @@ let handleSendLunchMenu = (sender_psid) => {
 }
 
 let getLunchMenuTemplate = () => {
+    // get data from database
+
+
     let response = {
         "attachment": {
             "type": "template",
